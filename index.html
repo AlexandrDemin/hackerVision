@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
+   <link href="https://fonts.googleapis.com/css?family=Ubuntu&amp;subset=cyrillic-ext" rel="stylesheet">
+   <script
+   src="https://code.jquery.com/jquery-3.2.1.min.js"
+   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+   crossorigin="anonymous"></script>
+   <style>
+       body {
+           background: #111117;
+           overflow: hidden;
+           font-family: Ubuntu;
+       }
+        .first-page, .alert-container {
+            height: 100vh;
+        }
+        .inner, .alert {
+            margin-top: calc(50vh - 6rem);
+        }
+        .button.start-button {
+            font-size: 5rem;
+            box-shadow: 0 1rem 5rem rgba(0,0,10,0.6);
+            border-radius: 8rem;
+        }
+        .button.start-button:focus {
+            outline:0;
+        }
+        .main-video {
+            min-height: 100vh;
+            min-width: 100vw;
+            width: auto;
+            height: auto;
+        }
+        .custom-error {
+            box-shadow: 0 1rem 5rem rgba(0,0,10,0.6);
+        }
+        @keyframes blink {
+            0% {
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+    <title>Start SkyGate</title>
+</head>
+<body>
+    <div class="text-center first-page">
+        <div class="inner">
+            <button class="button large start-button">Запустить SkyGate</button>
+        </div>
+    </div>
+    <video class="main-video hide" src="code.mp4" autoplay="autoplay" preload="auto" loop="loop"></video>
+    <div class="alert-container hide text-center row" style="position:fixed; top:0; bottom:0; left:0; right:0;">
+        <div class="alert callout custom-error" style="opacity:0; background-color:#B71C1C; color:white; padding: 4rem; font-size: 5rem; animation: blink 3s ease-out; animation-iteration-count: infinite;">
+            <strong>Ошибка!</strong> Перегрев процессора!
+        </div>
+    </div>
+    <script>
+        $('.start-button').on('click', function() {
+            $('.first-page').addClass('hide');
+            $('video').removeClass('hide');
+            setTimeout(function() {
+                // $('video').addClass('hide');
+                $('.alert-container').removeClass('hide');
+            }, 3000);
+        })
+    </script>
+</body>
+</html>
